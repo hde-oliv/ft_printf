@@ -1,41 +1,44 @@
-#include "tests.h"
+#include "libftprintf.h"
+#include "libft.h"
 
-FILE 	file = fopen("~/Documents/Projects/42/ft_printf/tests/output.txt", "w");
-int 	file_fd = open("~/Documents/Projects/42/ft_printf/tests/output.txt", O_RDONLY);
-char 	**want;
-char 	**got;
+static char c = 'a';
 
-int printf(const char format, ...)
+static void ft_printf_with_no_data_conversions_and_valid_string(void)
 {
-	va_list	args;
-	int 	done;
-
-	va_start(args, format)
-	done = vfprintf(file, format, args);
-	va_end(args);
-
-	return (done);
-}
-/* Do the same as above to ft_printf */
-
-static int	result_analyzer(char **got, char **want)
-{
-	if (!strcmp(*got, *want))
-	{
-		free(*got);
-		free(*want);
-		return (1);
-	}
-	free(*got);
-	free(*want);
-	return (0);
+	ft_printf("Hello World!\n");
 }
 
-static void line_grabber(char **got, char **want)
+static void ft_printf_with_no_data_conversions_and_empty_string(void)
 {
-	get_next_line(file_fd, got);
-	get_next_line(file_fd, want);
+	ft_printf("");
 }
 
-/* Begin tests */
+static void ft_printf_with_one_char_conversion_and_empty_string(void)
+{
+	printf("%c", c);
+}
 
+static void ft_printf_with_multiple_char_conversion_and_empty_string(void)
+{
+	printf("%c%c%c%c%c", c, c, c, c, c);
+}
+
+static void ft_printf_with_one_char_conversion_and_valid_string(void)
+{
+	printf("This is the first letter: %c", c);
+}
+
+static void ft_printf_with_multiple_char_conversion_and_valid_string(void)
+{
+	printf("These are the first letters: %c and %c, %c or %c", c, c, c, c);
+}
+
+int main(void)
+{
+	ft_printf_with_no_data_conversions_and_valid_string();
+	ft_printf_with_no_data_conversions_and_empty_string();
+	ft_printf_with_one_char_conversion_and_empty_string();
+	ft_printf_with_multiple_char_conversion_and_empty_string();
+	ft_printf_with_one_char_conversion_and_valid_string();
+	ft_printf_with_multiple_char_conversion_and_valid_string();
+}
