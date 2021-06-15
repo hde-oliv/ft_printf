@@ -3,6 +3,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <string.h>
+# include "libft.h"
 
 int ft_printf(const char *format, ...);
 
