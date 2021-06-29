@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "libftprintf.h"
 
-void	flag_applier(t_ftag *node, char **string)
+void	flag_applier(t_tag *node, char **string)
 {
 	char	*temp_str;
 

@@ -25,11 +25,11 @@ int	ft_printf(const char *format, ...)
 	if (!has_format_tag((char *)format))
 		return (send_output((char *)format));
 	tmp_format = (char *)format;
-	count = ftag_handler(&tmp_format, args);
+	count = tag_handler(&tmp_format, args);
 	tmp_count = 1;
 	while (tmp_count)
 	{
-		tmp_count = ftag_handler(&tmp_format, args);
+		tmp_count = tag_handler(&tmp_format, args);
 		count += tmp_count;
 	}
 	va_end(args);

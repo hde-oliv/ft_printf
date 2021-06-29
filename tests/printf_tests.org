@@ -1,0 +1,7 @@
+#+begin_src C :include <stdio.h>
+char s[2] = {'a', 0};
+printf("%r0r-s", s);
+#+end_src
+
+#+RESULTS:
+: 0.0000000f-s

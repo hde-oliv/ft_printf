@@ -8,7 +8,7 @@ SRC		:=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 			ft_lstmap.c ft_dfree.c ft_isspace.c ft_intlen.c ft_range.c \
-			ft_abs.c ft_atoll.c \
+			ft_abs.c ft_atoll.c ft_itoh.c \
 
 OBJS    :=	$(SRC:.c=.o)
 
@@ -18,6 +18,7 @@ CC		:=	clang
 LIB		:=	ar rcs
 
 CFLAGS	+=	-Wall -Wextra -Werror
+TFLAGS	+=	-g3
 RM		:=	rm -rf
 
 
@@ -25,7 +26,7 @@ RM		:=	rm -rf
 all:		$(NAME)
 
 .c.o:
-			@$(CC) $(CFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) $(TFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@$(LIB) $(NAME) $(OBJS)

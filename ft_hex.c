@@ -4,7 +4,7 @@
 
 static char	*ft_strupcase(char *str);
 
-int	hexl_handler(t_ftag *node, va_list args)
+int	hexl_handler(t_tag *node, va_list args)
 {
 	size_t	pointer;
 	char	*string;
@@ -12,14 +12,14 @@ int	hexl_handler(t_ftag *node, va_list args)
 
 	pointer = va_arg(args, size_t);
 	string = ft_itoh(pointer);
-	tag_applier(node, &string);
+	flag_applier(node, &string);
 	counter = send_output(string);
 	free(string);
 	free(node->flags);
 	return (counter);
 }
 
-int	ptr_handler(t_ftag *node, va_list args)
+int	ptr_handler(t_tag *node, va_list args)
 {
 	size_t	pointer;
 	char	*string;
@@ -27,14 +27,14 @@ int	ptr_handler(t_ftag *node, va_list args)
 
 	pointer = va_arg(args, size_t);
 	string = ft_itoh(pointer);
-	tag_applier(node, &string);
+	flag_applier(node, &string);
 	counter = send_output(string);
 	free(string);
 	free(node->flags);
 	return (counter);
 }
 
-int	hexu_handler(t_ftag *node, va_list args)
+int	hexu_handler(t_tag *node, va_list args)
 {
 	size_t	pointer;
 	char	*string;
@@ -42,7 +42,7 @@ int	hexu_handler(t_ftag *node, va_list args)
 
 	pointer = va_arg(args, size_t);
 	string = ft_itoh(pointer);
-	tag_applier(node, &string);
+	flag_applier(node, &string);
 	string = ft_strupcase(string);
 	counter = send_output(string);
 	free(string);

@@ -1,4 +1,4 @@
-SRC		:=	ft_printf.c ft_char.c ft_flag.c ft_hex.c ft_int.c ft_tag.c
+SRC		:=	ft_printf.c ft_char.c ft_flag.c ft_hex.c ft_int.c ft_tag.c ft_percent.c
 
 OBJS    :=	$(SRC:.c=.o)
 
@@ -7,9 +7,8 @@ RLIB    :=	ranlib
 CC		:=	clang
 LIB		:=	ar rcs
 
-CFLAGS	+=	-Wall -Wextra -Werror
+CFLAGS	+=	-Wall -Wextra -Werror -g3 -fsanitize=address
 LFLAGS	+=	-I.
-TFLAGS	+=	-g -fsanitize=address
 RM		:=	rm -rf
 
 LIBFT	:=	libft
@@ -26,9 +25,11 @@ $(NAME):	$(OBJS)
 			@$(RLIB) $(NAME)
 
 clean:
+			@$(MAKE) -C $(LIBFT) clean
 			@$(RM) $(OBJS)
 
 fclean: 	clean
+			@$(MAKE) -C $(LIBFT) fclean
 			@$(RM) $(NAME)
 
 libft:
