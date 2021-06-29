@@ -1,4 +1,4 @@
-SRC		:=	ft_printf.c \
+SRC		:=	ft_printf.c ft_char.c ft_flag.c ft_hex.c ft_int.c ft_tag.c
 
 OBJS    :=	$(SRC:.c=.o)
 
@@ -34,14 +34,6 @@ fclean: 	clean
 libft:
 			@$(MAKE) -C $(LIBFT)
 
-tests:		all
-			@$(CC) $(CFLAGS) $(TFLAGS) $(LFLAGS)/$(LIBFT) tests/printf_tests.c $(NAME) -o printf.out
-			@$(CC) $(CFLAGS) $(TFLAGS) $(LFLAGS)/$(LIBFT) tests/ft_printf_tests.c $(NAME) -o ft_printf.out
-			@./ft_printf.out > ft_printf.result
-			@./printf.out > printf.result
-			@rm -rf ft_printf.out printf.out
-			@diff printf.result ft_printf.result
-
 re: 		fclean all
 
-.PHONY: 	all clean fclean re libft tests
+.PHONY: 	all clean fclean re libft

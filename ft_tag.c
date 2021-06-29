@@ -5,7 +5,7 @@
 static int	ftag_validator(t_ftag *node, char *string);
 static int	ftag_caller(t_ftag *node, va_list args);
 static int	prefix_handler(char **string);
-static int	percent_handler(char *flags);
+static int	percent_handler(t_ftag *node);
 
 int	ftag_handler(char **string, va_list args)
 {
@@ -20,7 +20,7 @@ int	ftag_handler(char **string, va_list args)
 			return (counter);
 		bool = ftag_validator(&node, *string);
 		if (bool)
-			return(ftag_caller(&node, args));
+			return (ftag_caller(&node, args));
 	}
 	return (0);
 }
@@ -48,23 +48,23 @@ static int	ftag_validator(t_ftag *node, char *string)
 static int	ftag_caller(t_ftag *node, va_list args)
 {
 	if (node->converter == 'c')
-		return (char_handler(node->flags, args));
+		return (char_handler(node, args));
 	if (node->converter == 's')
-		return (str_handler(node->flags, args));
+		return (str_handler(node, args));
 	if (node->converter == 'p')
-		return (ptr_handler(node->flags, args));
+		return (ptr_handler(node, args));
 	if (node->converter == 'd' || node->converter == 'i')
-		return (int_handler(node->flags, args));
+		return (int_handler(node, args));
 	if (node->converter == 'u')
-		return (uint_handler(node->flags, args));
+		return (uint_handler(node, args));
 	if (node->converter == 'x')
-		return (hexl_handler(node->flags, args));
+		return (hexl_handler(node, args));
 	if (node->converter == 'X')
-		return (hexu_handler(node->flags, args));
-	return (percent_handler(node->flags));
+		return (hexu_handler(node, args));
+	return (percent_handler(node));
 }
 
-static int prefix_handler(char **string)
+static int	prefix_handler(char **string)
 {
 	char	*start;
 	int		counter;
@@ -75,15 +75,11 @@ static int prefix_handler(char **string)
 	(*string)[start - *string] = '\0';
 	counter = send_output(*string);
 	*string = start + 1;
-	return(counter);
+	return (counter);
 }
 
-static int	percent_handler(char *string)
+static int	percent_handler(t_ftag *node)
 {
-	int counter;
-
-	counter = send_output(string);
-	counter += send_output("%");
-	free(string);
-	return (counter);
+	node->converter = 0;
+	return (0);
 }

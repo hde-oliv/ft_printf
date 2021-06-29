@@ -1,7 +1,12 @@
 #include "libft.h"
 #include "libftprintf.h"
 
-void	tag_applier(char *flags, char **string)
+void	flag_applier(t_ftag *node, char **string)
 {
-	return (0);
+	char	*temp_str;
+
+	temp_str = *string;
+	node->converter = 'a';
+	*string = ft_strdup(*string);
+	free(temp_str);
 }
