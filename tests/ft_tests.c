@@ -222,6 +222,30 @@ static void ft_printf_with_multiple_up_hex_conversion_before_valid_string(void)
 	ft_printf("%X%X%X%X%X <- My printf up_hex test!\n", p, p, p, p, p);
 }
 
+static void ft_printf_with_one_percent_conversion_and_empty_string(void)
+{
+	ft_printf("%%\n");
+}
+
+static void ft_printf_with_multiple_percent_conversion_and_empty_string(void)
+{
+	ft_printf("%%%%%%%%%%\n");
+}
+
+static void ft_printf_with_one_percent_conversion_and_valid_string(void)
+{
+	ft_printf("Look at this incredible percent %%\n");
+}
+
+static void ft_printf_with_multiple_percent_conversion_and_valid_string(void)
+{
+	ft_printf("Look at these incredible percents: %% and %%, %% or %%\n");
+}
+
+static void ft_printf_with_multiple_percent_conversion_before_valid_string(void)
+{
+	ft_printf("%%%%%%%%%% <- My printf percent test!\n");
+}
 
 int main(void)
 {
@@ -277,4 +301,10 @@ int main(void)
 	ft_printf_with_one_up_hex_conversion_and_valid_string();
 	ft_printf_with_multiple_up_hex_conversion_and_valid_string();
 	ft_printf_with_multiple_up_hex_conversion_before_valid_string();
+	ft_printf("========Percent Tests========\n");
+	ft_printf_with_one_percent_conversion_and_empty_string();
+	ft_printf_with_multiple_percent_conversion_and_empty_string();
+	ft_printf_with_one_percent_conversion_and_valid_string();
+	ft_printf_with_multiple_percent_conversion_and_valid_string();
+	ft_printf_with_multiple_percent_conversion_before_valid_string();
 }
