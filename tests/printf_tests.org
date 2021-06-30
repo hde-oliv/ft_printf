@@ -1,7 +1,13 @@
-#+begin_src C :include <stdio.h>
+* Hex/Pointer tests
+#+begin_src C :include <stdio.h> :include <stdlib.h>
 char s[2] = {'a', 0};
-printf("%r0r-s", s);
+char *p;
+p = malloc(2);
+p[0] = 'a';
+p[1] = '\0';
+//printf("{%x, %u}, {%X, %u}, {%p, %llu}\n", s, s, s, s, s, s);
+//printf("{%x, %u}, {%X, %u}, {%p, %llu}\n", p, p, p, p, p, p);
 #+end_src
 
 #+RESULTS:
-: 0.0000000f-s
+: 0

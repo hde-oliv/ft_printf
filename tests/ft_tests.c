@@ -5,6 +5,7 @@ static char c = 'a';
 static char s[6] = {'s', 't', 'i', 'f', 'f', '\0'};
 static int	i = 1984;
 static unsigned int u = 3000000000;
+static char *p = s;
 
 static void ft_printf_with_no_data_conversions_and_valid_string(void)
 {
@@ -146,6 +147,81 @@ static void ft_printf_with_multiple_unsigned_integer_conversion_before_valid_str
 	ft_printf("%u%u%u%u%u <- My printf unsigned_integer test!\n", u, u, u, u, u);
 }
 
+static void ft_printf_with_one_pointer_conversion_and_empty_string(void)
+{
+	ft_printf("%p\n", p);
+}
+
+static void ft_printf_with_multiple_pointer_conversion_and_empty_string(void)
+{
+	ft_printf("%p%p%p%p%p\n", p, p, p, p, p);
+}
+
+static void ft_printf_with_one_pointer_conversion_and_valid_string(void)
+{
+	ft_printf("Look at this incredible pointer %p\n", p);
+}
+
+static void ft_printf_with_multiple_pointer_conversion_and_valid_string(void)
+{
+	ft_printf("Look at these incredible pointers: %p and %p, %p or %p\n", p, p, p, p);
+}
+
+static void ft_printf_with_multiple_pointer_conversion_before_valid_string(void)
+{
+	ft_printf("%p%p%p%p%p <- My printf pointer test!\n", p, p, p, p, p);
+}
+
+static void ft_printf_with_one_low_hex_conversion_and_empty_string(void)
+{
+	ft_printf("%x\n", p);
+}
+
+static void ft_printf_with_multiple_low_hex_conversion_and_empty_string(void)
+{
+	ft_printf("%x%x%x%x%x\n", p, p, p, p, p);
+}
+
+static void ft_printf_with_one_low_hex_conversion_and_valid_string(void)
+{
+	ft_printf("Look at this incredible low_hex %x\n", p);
+}
+
+static void ft_printf_with_multiple_low_hex_conversion_and_valid_string(void)
+{
+	ft_printf("Look at these incredible low_hexes: %x and %x, %x or %x\n", p, p, p, p);
+}
+
+static void ft_printf_with_multiple_low_hex_conversion_before_valid_string(void)
+{
+	ft_printf("%x%x%x%x%x <- My printf low_hex test!\n", p, p, p, p, p);
+}
+
+static void ft_printf_with_one_up_hex_conversion_and_empty_string(void)
+{
+	ft_printf("%X\n", p);
+}
+
+static void ft_printf_with_multiple_up_hex_conversion_and_empty_string(void)
+{
+	ft_printf("%X%X%X%X%X\n", p, p, p, p, p);
+}
+
+static void ft_printf_with_one_up_hex_conversion_and_valid_string(void)
+{
+	ft_printf("Look at this incredible up_hex %X\n", p);
+}
+
+static void ft_printf_with_multiple_up_hex_conversion_and_valid_string(void)
+{
+	ft_printf("Look at these incredible up_hexes: %X and %X, %X or %X\n", p, p, p, p);
+}
+
+static void ft_printf_with_multiple_up_hex_conversion_before_valid_string(void)
+{
+	ft_printf("%X%X%X%X%X <- My printf up_hex test!\n", p, p, p, p, p);
+}
+
 
 int main(void)
 {
@@ -183,4 +259,22 @@ int main(void)
 	ft_printf_with_one_unsigned_integer_conversion_and_valid_string();
 	ft_printf_with_multiple_unsigned_integer_conversion_and_valid_string();
 	ft_printf_with_multiple_unsigned_integer_conversion_before_valid_string();
+	ft_printf("========Pointer Tests========\n");
+	ft_printf_with_one_pointer_conversion_and_empty_string();
+	ft_printf_with_multiple_pointer_conversion_and_empty_string();
+	ft_printf_with_one_pointer_conversion_and_valid_string();
+	ft_printf_with_multiple_pointer_conversion_and_valid_string();
+	ft_printf_with_multiple_pointer_conversion_before_valid_string();
+	ft_printf("========Lowercase Hexadecimal Tests========\n");
+	ft_printf_with_one_low_hex_conversion_and_empty_string();
+	ft_printf_with_multiple_low_hex_conversion_and_empty_string();
+	ft_printf_with_one_low_hex_conversion_and_valid_string();
+	ft_printf_with_multiple_low_hex_conversion_and_valid_string();
+	ft_printf_with_multiple_low_hex_conversion_before_valid_string();
+	ft_printf("========Uppercase Hexadecimal Tests========\n");
+	ft_printf_with_one_up_hex_conversion_and_empty_string();
+	ft_printf_with_multiple_up_hex_conversion_and_empty_string();
+	ft_printf_with_one_up_hex_conversion_and_valid_string();
+	ft_printf_with_multiple_up_hex_conversion_and_valid_string();
+	ft_printf_with_multiple_up_hex_conversion_before_valid_string();
 }
