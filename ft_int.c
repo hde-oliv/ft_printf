@@ -27,7 +27,7 @@ int	uint_handler(t_tag *node, va_list args)
 	unsigned int		integer;
 	int					counter;
 
-	integer = va_arg(args, int);
+	integer = va_arg(args, unsigned int);
 	string = ft_uitoa(integer);
 	flag_applier(node, &string);
 	counter = send_output(string);
