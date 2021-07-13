@@ -10,7 +10,7 @@ int	char_handler(va_list args)
 	to_print = va_arg(args, int);
 	if (!to_print)
 	{
-		write(1, 0, 1);
+		write(1, &to_print, 1);
 		return (1);
 	}
 	string = ft_calloc(sizeof(char), 2);
