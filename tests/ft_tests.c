@@ -252,6 +252,12 @@ static void ft_printf_with_multiple_percent_conversion_but_wrong_quantity(void)
 	ft_printf("%%%%%%%%% <- My printf percent test!\n");
 }
 
+static void ft_printf_with_invalid_conversion(void)
+{
+	ft_printf("%r\n", 6);
+}
+
+
 int main(void)
 {
 	ft_printf("========General Tests========\n");
@@ -313,4 +319,6 @@ int main(void)
 	ft_printf_with_multiple_percent_conversion_and_valid_string();
 	ft_printf_with_multiple_percent_conversion_before_valid_string();
 	ft_printf_with_multiple_percent_conversion_but_wrong_quantity();
+	ft_printf("========Invalid Tests========\n");
+	ft_printf_with_invalid_conversion();
 }

@@ -18,7 +18,6 @@ CC		:=	clang
 LIB		:=	ar rcs
 
 CFLAGS	+=	-Wall -Wextra -Werror
-TFLAGS	+=	-g3 -fsanitize=address
 RM		:=	rm -rf
 
 
@@ -26,7 +25,7 @@ RM		:=	rm -rf
 all:		$(NAME)
 
 .c.o:
-			@$(CC) $(CFLAGS) $(TFLAGS) -c $< -o $@
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@$(LIB) $(NAME) $(OBJS)

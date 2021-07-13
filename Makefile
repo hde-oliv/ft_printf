@@ -7,7 +7,7 @@ RLIB    :=	ranlib
 CC		:=	clang
 LIB		:=	ar rcs
 
-CFLAGS	+=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	+=	-Wall -Wextra -Werror
 LFLAGS	+=	-I.
 RM		:=	rm -rf
 
