@@ -4,13 +4,20 @@
 
 int	char_handler(t_tag *node, va_list args)
 {
+	char	to_print;
 	char	*string;
 	int		counter;
 
 	string = ft_calloc(sizeof(char), 2);
-	string[0] = va_arg(args, int);
-	flag_applier(node, &string);
-	counter = send_output(string);
+	to_print = va_arg(args, int);
+	if (!to_print)
+		counter = write(1, &to_print, 1);
+	else
+	{
+		string[0] = to_print;
+		flag_applier(node, &string);
+		counter = send_output(string);
+	}
 	free(node->flags);
 	free(string);
 	return (counter);
