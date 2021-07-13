@@ -24,15 +24,16 @@ int	str_handler(va_list args)
 {
 	char	*string;
 	int		counter;
+	char	*pointer;
 
-	string = ft_strdup(va_arg(args, char *));
-	if (!string)
+	pointer = va_arg(args, char *);
+	if (!pointer)
 	{
 		write(1, "(null)", 6);
-		counter = -1;
+		return (-1);
 	}
-	else
-		counter = send_output(string);
+	string = ft_strdup(pointer);
+	counter = send_output(string);
 	free(string);
 	return (counter);
 }
