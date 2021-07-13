@@ -1,56 +1,41 @@
 #include "libft.h"
-#include "libftprintf.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
 static char	*ft_strupcase(char *str);
-static char	*ft_stox(size_t n, int size);
+static char	*ft_stox(size_t n);
+static char	*ft_itox(unsigned int n);
 
-int	hexl_handler(t_tag *node, va_list args)
+int	ptr_handler(va_list args)
 {
-	unsigned int	hex;
+	size_t			pointer;
 	char			*string;
+	char			*tmp_str;
 	int				counter;
-
-	hex = va_arg(args, unsigned int);
-	string = ft_itox(hex, 8);
-	flag_applier(node, &string);
-	counter = send_output(string);
-	free(string);
-	free(node->flags);
-	return (counter);
-}
-
-int	ptr_handler(t_tag *node, va_list args)
-{
-	size_t	pointer;
-	char	*string;
-	char	*tmp_str;
-	int		counter;
 
 	pointer = va_arg(args, size_t);
-	tmp_str = ft_stox(pointer, 12);
+	if (!pointer)
+		return (write(1, "(nil)", 5));
+	tmp_str = ft_stox(pointer);
 	string = ft_strjoin("0x", tmp_str);
-	flag_applier(node, &string);
+	free(tmp_str);
 	counter = send_output(string);
 	free(string);
-	free(tmp_str);
-	free(node->flags);
 	return (counter);
 }
 
-int	hexu_handler(t_tag *node, va_list args)
+int	hex_handler(char converter, va_list args)
 {
 	unsigned int	hex;
 	char			*string;
 	int				counter;
 
 	hex = va_arg(args, unsigned int);
-	string = ft_itox(hex, 8);
-	flag_applier(node, &string);
-	string = ft_strupcase(string);
-	counter = send_output(string);
+	string = ft_itox(hex);
+	if (converter == 'X')
+		counter = send_output(ft_strupcase(string));
+	else
+		counter = send_output(string);
 	free(string);
-	free(node->flags);
 	return (counter);
 }
 
@@ -67,17 +52,14 @@ static char	*ft_strupcase(char *str)
 	return (str);
 }
 
-static char	*ft_stox(size_t n, int size)
+static char	*ft_stox(size_t n)
 {
 	ssize_t		i;
-	char		*p;
+	char		p[17];
 
-	i = size;
-	p = (char *) malloc(sizeof(char) * i + 1);
-	if (p == NULL)
-		return (NULL);
+	i = 16;
 	p[i] = '\0';
-	while (--i != -1)
+	while (--i != -1 && n != 0)
 	{
 		if ((n % 16) < 10)
 			p[i] = ((n % 16)) + 48;
@@ -85,5 +67,23 @@ static char	*ft_stox(size_t n, int size)
 			p[i] = (n % 16) + 88;
 		n = n / 16;
 	}
-	return (p);
+	return (ft_strdup(&p[i + 1]));
+}
+
+static char	*ft_itox(unsigned int n)
+{
+	ssize_t		i;
+	char		p[9];
+
+	i = 8;
+	p[i] = '\0';
+	while (--i != -1 && n != 0)
+	{
+		if ((n % 16) < 10)
+			p[i] = ((n % 16)) + 48;
+		else
+			p[i] = (n % 16) + 88;
+		n = n / 16;
+	}
+	return (ft_strdup(&p[i + 1]));
 }

@@ -1,6 +1,5 @@
-#include "libftprintf.h"
 #include "libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 
 static	int	has_format_tag(char *string)
 {
@@ -21,9 +20,9 @@ int	ft_printf(const char *format, ...)
 	int		tmp_count;
 	char	*tmp_format;
 
-	va_start(args, format);
 	if (!has_format_tag((char *)format))
 		return (send_output((char *)format));
+	va_start(args, format);
 	tmp_format = (char *)format;
 	count = tag_handler(&tmp_format, args);
 	tmp_count = 1;

@@ -1,4 +1,4 @@
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "libft.h"
 
 static char c = 'a';
@@ -247,6 +247,11 @@ static void ft_printf_with_multiple_percent_conversion_before_valid_string(void)
 	ft_printf("%%%%%%%%%% <- My printf percent test!\n");
 }
 
+static void ft_printf_with_multiple_percent_conversion_but_wrong_quantity(void)
+{
+	ft_printf("%%%%%%%%% <- My printf percent test!\n");
+}
+
 int main(void)
 {
 	ft_printf("========General Tests========\n");
@@ -307,4 +312,5 @@ int main(void)
 	ft_printf_with_one_percent_conversion_and_valid_string();
 	ft_printf_with_multiple_percent_conversion_and_valid_string();
 	ft_printf_with_multiple_percent_conversion_before_valid_string();
+	ft_printf_with_multiple_percent_conversion_but_wrong_quantity();
 }

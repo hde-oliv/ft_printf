@@ -1,4 +1,4 @@
-SRC		:=	ft_printf.c ft_char.c ft_flag.c ft_hex.c ft_int.c ft_tag.c ft_percent.c
+SRC		:=	ft_printf.c ft_char.c ft_hex.c ft_int.c ft_tag.c
 
 OBJS    :=	$(SRC:.c=.o)
 

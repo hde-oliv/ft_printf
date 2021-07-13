@@ -1,12 +1,10 @@
 #include "libft.h"
-#include "libftprintf.h"
-#include <stdarg.h>
-#include <stdlib.h>
+#include "ft_printf.h"
 
 static size_t	ft_uintlen(unsigned int i);
 static char		*ft_uitoa(unsigned int n);
 
-int	int_handler(t_tag *node, va_list args)
+int	int_handler(va_list args)
 {
 	char	*string;
 	int		integer;
@@ -14,14 +12,12 @@ int	int_handler(t_tag *node, va_list args)
 
 	integer = va_arg(args, int);
 	string = ft_itoa(integer);
-	flag_applier(node, &string);
 	counter = send_output(string);
 	free(string);
-	free(node->flags);
 	return (counter);
 }
 
-int	uint_handler(t_tag *node, va_list args)
+int	uint_handler(va_list args)
 {
 	char				*string;
 	unsigned int		integer;
@@ -29,9 +25,7 @@ int	uint_handler(t_tag *node, va_list args)
 
 	integer = va_arg(args, unsigned int);
 	string = ft_uitoa(integer);
-	flag_applier(node, &string);
 	counter = send_output(string);
-	free(node->flags);
 	free(string);
 	return (counter);
 }

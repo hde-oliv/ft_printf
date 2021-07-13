@@ -85,7 +85,6 @@ int			ft_isspace(char c);
 int			*ft_range(int min, int max);
 int			ft_abs(int n);
 long long	ft_atoll(const char *str);
-char		*ft_itox(unsigned int n, int size);
 
 /* btree functions */
 t_btree		*btree_create_node(void *item);

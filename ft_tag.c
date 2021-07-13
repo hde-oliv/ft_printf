@@ -1,16 +1,14 @@
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include "libft.h"
 #include <stdarg.h>
 
-static int	tag_validator(t_tag *node, char **string);
-static int	tag_caller(char **string, t_tag *node, va_list args);
+static int	tag_caller(char converter, char **string, va_list args);
 static int	prefix_handler(char **string);
 static int	tag_invalid(char **string);
+static char	which_tag(char **string);
 
 int	tag_handler(char **string, va_list args)
 {
-	t_tag	node;
-	int		bool;
 	int		counter;
 
 	if (**string)
@@ -18,53 +16,36 @@ int	tag_handler(char **string, va_list args)
 		counter = prefix_handler(string);
 		if (counter)
 			return (counter);
-		bool = tag_validator(&node, string);
-		if (bool)
-			return(tag_caller(string, &node, args));
-		else
-			return (tag_invalid(string));
+		return (tag_caller(which_tag(string), string, args));
 	}
 	return (0);
 }
 
-static int	tag_validator(t_tag *node, char **string)
+static char	which_tag(char **string)
 {
-	char	*tag_list;
-	char	*tag_ptr;
-	int		i;
+	char	tag;
 
-	tag_list = "0.-*123456789";
-	tag_ptr = (void *) 1;
-	i = 1;
-	while (tag_ptr && *(*string + i))
-	{
-		tag_ptr = ft_strchr(tag_list, *(*string + i));
-		i++;
-	}
-	node->converter = *(*string + i - 1);
-	node->flags = ft_substr(*string, 1, (*string + i - 1) - *string);
-	*string = (*string + i);
-	return (1);
+	tag = (*string)[1];
+	*string = *string + 2;
+	return (tag);
 }
 
-static int	tag_caller(char **string, t_tag *node, va_list args)
+static int	tag_caller(char converter, char **string, va_list args)
 {
-	if (node->converter == 'c')
-		return (char_handler(node, args));
-	if (node->converter == 's')
-		return (str_handler(node, args));
-	if (node->converter == 'p')
-		return (ptr_handler(node, args));
-	if (node->converter == 'd' || node->converter == 'i')
-		return (int_handler(node, args));
-	if (node->converter == 'u')
-		return (uint_handler(node, args));
-	if (node->converter == 'x')
-		return (hexl_handler(node, args));
-	if (node->converter == 'X')
-		return (hexu_handler(node, args));
-	if (node->converter == '%')
-		return (percent_handler(node));
+	if (converter == 'c')
+		return (char_handler(args));
+	if (converter == 's')
+		return (str_handler(args));
+	if (converter == 'p')
+		return (ptr_handler(args));
+	if (converter == 'd' || converter == 'i')
+		return (int_handler(args));
+	if (converter == 'u')
+		return (uint_handler(args));
+	if (converter == 'x' || converter == 'X')
+		return (hex_handler(converter, args));
+	if (converter == '%')
+		return (percent_handler());
 	else
 		return (tag_invalid(string));
 }
@@ -85,6 +66,8 @@ static int	prefix_handler(char **string)
 	if (!(start - *string))
 		return (0);
 	tmp_str = ft_substr(*string, 0, start - *string);
+	if (!tmp_str)
+		return (-1);
 	counter = send_output(tmp_str);
 	*string = start;
 	free(tmp_str);
@@ -105,6 +88,8 @@ static int	tag_invalid(char **string)
 		return (counter);
 	}
 	tmp_str = ft_substr(*string, 0, next - *string);
+	if (!tmp_str)
+		return (-1);
 	counter = send_output(tmp_str);
 	*string = next;
 	free(tmp_str);
