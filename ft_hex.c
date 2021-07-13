@@ -64,7 +64,7 @@ static char	*ft_stox(size_t n)
 		if ((n % 16) < 10)
 			p[i] = ((n % 16)) + 48;
 		else
-			p[i] = (n % 16) + 88;
+			p[i] = (n % 16) + 98;
 		n = n / 16;
 	}
 	return (ft_strdup(&p[i + 1]));
@@ -82,7 +82,7 @@ static char	*ft_itox(unsigned int n)
 		if ((n % 16) < 10)
 			p[i] = ((n % 16)) + 48;
 		else
-			p[i] = (n % 16) + 88;
+			p[i] = (n % 16) + 98;
 		n = n / 16;
 	}
 	return (ft_strdup(&p[i + 1]));
