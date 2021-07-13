@@ -1,10 +1,10 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	tag_caller(char converter, char **string, va_list args);
+static int	tag_caller(char converter, va_list args);
 static int	prefix_handler(char **string);
 static int	tag_invalid(char converter);
-static char	which_tag(char **string);
+static char	converter_handler(char **string);
 
 int	tag_handler(char **string, va_list args)
 {
@@ -15,12 +15,12 @@ int	tag_handler(char **string, va_list args)
 		counter = prefix_handler(string);
 		if (counter)
 			return (counter);
-		return (tag_caller(which_tag(string), string, args));
+		return (tag_caller(converter_handler(string), args));
 	}
 	return (0);
 }
 
-static char	which_tag(char **string)
+static char	converter_handler(char **string)
 {
 	char	tag;
 
@@ -29,7 +29,7 @@ static char	which_tag(char **string)
 	return (tag);
 }
 
-static int	tag_caller(char converter, char **string, va_list args)
+static int	tag_caller(char converter, va_list args)
 {
 	if (converter == 'c')
 		return (char_handler(args));
