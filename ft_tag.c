@@ -1,10 +1,9 @@
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdarg.h>
 
 static int	tag_caller(char converter, char **string, va_list args);
 static int	prefix_handler(char **string);
-static int	tag_invalid(char **string);
+static int	tag_invalid(char converter);
 static char	which_tag(char **string);
 
 int	tag_handler(char **string, va_list args)
@@ -47,7 +46,7 @@ static int	tag_caller(char converter, char **string, va_list args)
 	if (converter == '%')
 		return (percent_handler());
 	else
-		return (tag_invalid(string));
+		return (tag_invalid(converter));
 }
 
 static int	prefix_handler(char **string)
@@ -74,24 +73,9 @@ static int	prefix_handler(char **string)
 	return (counter);
 }
 
-static int	tag_invalid(char **string)
+static int	tag_invalid(char converter)
 {
-	char	*tmp_str;
-	char	*next;
-	int		counter;
-
-	next = ft_strchr(*string + 1, '%');
-	if (!next)
-	{
-		counter = send_output(*string);
-		*string = ft_strchr(*string, '\0');
-		return (counter);
-	}
-	tmp_str = ft_substr(*string, 0, next - *string);
-	if (!tmp_str)
-		return (-1);
-	counter = send_output(tmp_str);
-	*string = next;
-	free(tmp_str);
-	return (counter);
+	ft_putchar_fd('%', 1);
+	ft_putchar_fd(converter, 1);
+	return (2);
 }

@@ -1,13 +1,14 @@
 * Hex/Pointer tests
 #+begin_src C :include <stdio.h> :include <stdlib.h>
-char s[2] = {'a', 0};
-char *p;
-p = malloc(2);
-p[0] = 'a';
-p[1] = '\0';
-//printf("{%x, %u}, {%X, %u}, {%p, %llu}\n", s, s, s, s, s, s);
-//printf("{%x, %u}, {%X, %u}, {%p, %llu}\n", p, p, p, p, p, p);
+char *string;
+string = (void *)0;
+
+int i = printf("%s", string);
+int j = printf("this %s", string);
+int k = printf("%s this", string);
+
+printf("(%i)(%i)(%i)", i, j, k);
 #+end_src
 
 #+RESULTS:
-: 0
+: (null)this (null)(null) this(6)(11)(11)
