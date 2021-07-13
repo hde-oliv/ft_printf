@@ -27,11 +27,13 @@ int	ft_printf(const char *format, ...)
 	tmp_format = (char *)format;
 	count = tag_handler(&tmp_format, args);
 	tmp_count = 1;
-	while (tmp_count)
+	while (tmp_count && tmp_count != -1)
 	{
 		tmp_count = tag_handler(&tmp_format, args);
 		count += tmp_count;
 	}
 	va_end(args);
+	if (tmp_count == -1)
+		return (tmp_count);
 	return (count);
 }

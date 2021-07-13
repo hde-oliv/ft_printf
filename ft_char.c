@@ -29,8 +29,16 @@ int	str_handler(t_tag *node, va_list args)
 	int		counter;
 
 	string = ft_strdup(va_arg(args, char*));
-	flag_applier(node, &string);
-	counter = send_output(string);
+	if (!string)
+	{
+		write(1, "(null)", 6);
+		counter = -1;
+	}
+	else
+	{
+		flag_applier(node, &string);
+		counter = send_output(string);
+	}
 	free(node->flags);
 	free(string);
 	return (counter);
