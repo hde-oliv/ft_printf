@@ -3,7 +3,7 @@
 
 static char	*ft_strupcase(char *str);
 static char	*ft_stox(size_t n);
-static char	*ft_itox(unsigned int n);
+static char	*ft_uitox(unsigned int n);
 
 int	ptr_handler(va_list args)
 {
@@ -14,7 +14,7 @@ int	ptr_handler(va_list args)
 
 	pointer = va_arg(args, size_t);
 	if (!pointer)
-		return (write(1, "(nil)", 5));
+		return (write(1, "0x0", 3));
 	tmp_str = ft_stox(pointer);
 	string = ft_strjoin("0x", tmp_str);
 	free(tmp_str);
@@ -30,7 +30,7 @@ int	hex_handler(char converter, va_list args)
 	int				counter;
 
 	hex = va_arg(args, unsigned int);
-	string = ft_itox(hex);
+	string = ft_uitox(hex);
 	if (converter == 'X')
 		counter = send_output(ft_strupcase(string));
 	else
@@ -59,6 +59,8 @@ static char	*ft_stox(size_t n)
 
 	i = 16;
 	p[i] = '\0';
+	if (n == 0)
+		return (ft_strdup("0"));
 	while (--i != -1 && n != 0)
 	{
 		if ((n % 16) < 10)
@@ -70,13 +72,15 @@ static char	*ft_stox(size_t n)
 	return (ft_strdup(&p[i + 1]));
 }
 
-static char	*ft_itox(unsigned int n)
+static char	*ft_uitox(unsigned int n)
 {
 	ssize_t		i;
 	char		p[9];
 
 	i = 8;
 	p[i] = '\0';
+	if (n == 0)
+		return (ft_strdup("0"));
 	while (--i != -1 && n != 0)
 	{
 		if ((n % 16) < 10)
