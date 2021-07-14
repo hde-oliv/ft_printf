@@ -17,23 +17,23 @@ LIBFT_L :=	libft/libft.a
 all:		libft $(NAME)
 
 .c.o:
-			@$(CC) $(CFLAGS) -c $< -o $@ $(LFLAGS)/$(LIBFT)
+			$(CC) $(CFLAGS) -c $< -o $@ $(LFLAGS)/$(LIBFT)
 
 $(NAME):	$(OBJS)
-			@cp ./libft/libft.a $(NAME)
-			@$(LIB) $(NAME) $(OBJS)
-			@$(RLIB) $(NAME)
+			cp ./libft/libft.a $(NAME)
+			$(LIB) $(NAME) $(OBJS)
+			$(RLIB) $(NAME)
 
 clean:
-			@$(MAKE) -C $(LIBFT) clean
-			@$(RM) $(OBJS)
+			$(MAKE) -C $(LIBFT) clean
+			$(RM) $(OBJS)
 
 fclean: 	clean
-			@$(MAKE) -C $(LIBFT) fclean
-			@$(RM) $(NAME)
+			$(MAKE) -C $(LIBFT) fclean
+			$(RM) $(NAME)
 
 libft:
-			@$(MAKE) -C $(LIBFT)
+			$(MAKE) -C $(LIBFT)
 
 re: 		fclean all
 

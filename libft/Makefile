@@ -25,17 +25,17 @@ RM		:=	rm -rf
 all:		$(NAME)
 
 .c.o:
-			@$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@$(LIB) $(NAME) $(OBJS)
-			@$(RLIB) $(NAME)
+			$(LIB) $(NAME) $(OBJS)
+			$(RLIB) $(NAME)
 
 clean:
-			@$(RM) $(OBJS)
+			$(RM) $(OBJS)
 
 fclean: 	clean
-			@$(RM) $(NAME)
+			$(RM) $(NAME)
 
 re: 		fclean all
 
