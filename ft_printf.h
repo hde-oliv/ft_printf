@@ -5,6 +5,11 @@
 # include <string.h>
 # include <stdlib.h>
 
+enum e_printf
+{
+	NOTHING = -10
+};
+
 int		ft_printf(const char *format, ...);
 int		send_output(char *string);
 int		tag_handler(char **string, va_list args);
