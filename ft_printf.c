@@ -1,7 +1,6 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-
 static	int	has_format_tag(char *string)
 {
 	if (ft_strchr(string, '%'))
@@ -26,11 +25,11 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	tmp_format = (char *)format;
 	count = tag_handler(&tmp_format, args);
-	tmp_count = 0;
-	while (tmp_count != NOTHING && tmp_count != -1)
+	tmp_count = 1;
+	while (*tmp_format && tmp_count != -1)
 	{
-		count += tmp_count;
 		tmp_count = tag_handler(&tmp_format, args);
+		count += tmp_count;
 	}
 	va_end(args);
 	if (tmp_count == -1)

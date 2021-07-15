@@ -17,7 +17,7 @@ int	tag_handler(char **string, va_list args)
 			return (counter);
 		return (tag_caller(converter_handler(string), args));
 	}
-	return (NADA);
+	return (0);
 }
 
 static char	converter_handler(char **string)
