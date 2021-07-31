@@ -3,7 +3,7 @@
 #+DESCRIPTION: A printf clone.
 
 ** What it is
-This project consists on a basic copy of libc's printf.
+This project consists of a basic copy of libc's printf.
 
 ** Badge
 #+BEGIN_CENTER
