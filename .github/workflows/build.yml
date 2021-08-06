@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+    - name: make
+      run: make
+    - name: make clean
+      run: make clean
+    - name: make fclean
+      run: make fclean
+    - name: make re
+      run: make re
