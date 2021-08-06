@@ -2,6 +2,8 @@
 #+AUTHOR: Henrique Rocha
 #+DESCRIPTION: A printf clone.
 
+[[https://github.com/hde-oliv/ft_printf/actions/workflows/build.yml/badge.svg]] [[https://github.com/hde-oliv/ft_printf/actions/workflows/norminette.yml/badge.svg]]
+
 ** What it is
 This project consists of a basic copy of libc's printf.
 
