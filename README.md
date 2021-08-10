@@ -4,6 +4,9 @@
 <div align="center">
   <img src="https://github.com/hde-oliv/ft_printf/actions/workflows/build.yml/badge.svg"/>
   <img src="https://github.com/hde-oliv/ft_printf/actions/workflows/norminette.yml/badge.svg"/>
+  <a href="https://www.codefactor.io/repository/github/hde-oliv/ft_printf">
+    <img src="https://www.codefactor.io/repository/github/hde-oliv/ft_printf/badge" alt="CodeFactor" />
+  </a>
 </div>
 
 ## What it is
