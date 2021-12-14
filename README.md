@@ -1,13 +1,4 @@
-<div align="center">
-  <img src="https://i.imgur.com/6rW2BPq.png"/>
-</div>
-<div align="center">
-  <img src="https://github.com/hde-oliv/ft_printf/actions/workflows/build.yml/badge.svg"/>
-  <img src="https://github.com/hde-oliv/ft_printf/actions/workflows/norminette.yml/badge.svg"/>
-  <a href="https://www.codacy.com/gh/hde-oliv/ft_printf/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hde-oliv/ft_printf&amp;utm_campaign=Badge_Grade">
-    <img src="https://app.codacy.com/project/badge/Grade/835dd5b0636c4b669f98549d34f8f50c"/>
-  </a>
-</div>
+# ft_printf
 
 ## What it is
 This project consists of a basic copy of libc's printf.
