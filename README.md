@@ -38,7 +38,7 @@ The library is generated on the file libftprintf.a.
 ## Recommended suite of tests
 - [ft_printf_tester - Paulo Santana](https://github.com/paulo-santana/ft_printf_tester)
 
-## Found any bug?
+## Found any bugs?
 Feel free to contact me or create an issue!
 
 ## License
