@@ -1,9 +1,9 @@
 # ft_printf
 
-## What it is
-This project consists of a basic copy of libc's printf.
+## What is it?
+A simple reimplementation of C function [printf](https://en.wikipedia.org/wiki/Printf).
 
-Succeeded with 100%
+**Succeeded with 100%**
 
 ## Skills
 - Algorithms & AI
@@ -12,7 +12,9 @@ Succeeded with 100%
 
 
 ## Features
-It only handles basic format tags: c, s, p, d, i, u, x, X and %. Any other tag will be outputted as is. (Flags too!)
+It only handles the following format tags: c, s, p, d, i, u, x, X and %.  
+Any other tag will be outputted as is (including flags).  
+
 ### Examples:
 ```c
 ft_printf("%c", 'a');       --> 'a'
@@ -22,9 +24,9 @@ ft_printf("%f");            --> '%f'
 ```
 
 ## How to use it
-Requisites:
+Requirements:
 ```shell
-clang
+sudo apt install clang
 ```
 
 Clone the repository and run:
@@ -39,4 +41,5 @@ The library is generated on the file libftprintf.a.
 ## Found any bug?
 Feel free to contact me or create an issue!
 
-###### Licensed under GPLv3
+## License
+This project is licensed under the GNU General Public License v3.0 - see the [COPYING](https://github.com/hde-oliv/ft_printf/blob/master/COPYING) file for details.
